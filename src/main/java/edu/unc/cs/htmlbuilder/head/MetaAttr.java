@@ -84,7 +84,11 @@ public class MetaAttr implements IMetaAttr {
             text.append(" id=\"").append(id).append("\"");
         }
         text.append(attrs.getHTML());
-        for (String[] attr : attributes) {
+        for (int i = 0; i < attributes.size(); i ++) {
+            String[] attr = attributes.get(i);
+            if (i > 0) {
+                text.append(";");
+            }
             text.append(" ").append(attr[0]).append("=\"").append(attr[1]).append("\"");
         }
         text.append(">");
