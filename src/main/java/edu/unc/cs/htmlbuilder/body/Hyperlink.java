@@ -152,4 +152,9 @@ public class Hyperlink implements IHyperlink {
     public LinkTarget getTarget() {
         return target;
     }
+    
+    @Override
+    public String getTagAbbr() {
+        return "a";
+    }
 }

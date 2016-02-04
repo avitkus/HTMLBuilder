@@ -134,4 +134,9 @@ public class OrderedList implements IOrderedList {
     public String getID() {
         return id;
     }
+    
+    @Override
+    public String getTagAbbr() {
+        return "ol";
+    }
 }

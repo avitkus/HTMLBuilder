@@ -220,4 +220,9 @@ public class TextArea implements ITextArea {
     public String getID() {
         return id;
     }
+    
+    @Override
+    public String getTagAbbr() {
+        return "textarea";
+    }
 }

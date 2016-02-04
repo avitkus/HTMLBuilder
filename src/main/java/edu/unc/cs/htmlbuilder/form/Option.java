@@ -30,7 +30,7 @@ public class Option implements IOption {
         if (!className.isEmpty()) {
             html.append(" class=\"").append(className).append("\"");
         }
-        if (id.isEmpty()) {
+        if (!id.isEmpty()) {
             html.append(" id=\"").append(id).append("\"");
         }
         html.append(attrs.getHTML()).append(">").append(text).append("</option>");
@@ -139,5 +139,10 @@ public class Option implements IOption {
     @Override
     public String getID() {
         return id;
+    }
+    
+    @Override
+    public String getTagAbbr() {
+        return "option";
     }
 }

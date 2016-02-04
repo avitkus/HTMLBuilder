@@ -135,4 +135,9 @@ public class SeparatedNavigationBar implements INavigationBar {
     public String getID() {
         return id;
     }
+    
+    @Override
+    public String getTagAbbr() {
+        return "";
+    }
 }

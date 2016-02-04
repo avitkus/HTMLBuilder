@@ -164,4 +164,9 @@ public abstract class Input implements IInput {
     public String getID() {
         return id;
     }
+    
+    @Override
+    public String getTagAbbr() {
+        return "input";
+    }
 }

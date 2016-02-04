@@ -8,12 +8,13 @@ import edu.unc.cs.htmlBuilder.util.IAttributeManager;
 import edu.unc.cs.htmlBuilder.util.IStyleManager;
 import edu.unc.cs.htmlBuilder.util.StyleManager;
 import edu.unc.cs.htmlBuilder.util.Offsetter;
+import edu.unc.cs.htmlbuilder.body.AbstractBodyElement;
 
 /**
  * @author Andrew Vitkus
  *
  */
-public class UnorderedList implements IUnorderedList {
+public class UnorderedList extends AbstractBodyElement implements IUnorderedList {
 
     private ArrayList<IListItem> items;
     private IAttributeManager attrs;
@@ -22,24 +23,26 @@ public class UnorderedList implements IUnorderedList {
     public String id;
 
     public UnorderedList(IListItem... items) {
+        super(false, true);
         styleManager = new StyleManager();
         attrs = new AttributeManager();
         className = "";
         id = "";
         this.items = new ArrayList<>();
         for (IListItem item : items) {
+            addChild(item);
             this.items.add(item);
         }
     }
 
-    @Override
+    /*@Override
     public String getText(int indent) {
         StringBuilder text = new StringBuilder();
         text.append(Offsetter.indent(indent++)).append("<ul");
-        if (className != "") {
+        if (!className.isEmpty()) {
             text.append(" class=\"").append(className).append("\"");
         }
-        if (id != "") {
+        if (!id.isEmpty()) {
             text.append(" id=\"").append(id).append("\"");
         }
         text.append(styleManager.getStyleHTML()).append(attrs.getHTML()).append(">\n");
@@ -48,15 +51,16 @@ public class UnorderedList implements IUnorderedList {
         }
         text.append(Offsetter.indent(indent - 1)).append("</ul>");
         return text.toString();
-    }
+    }*/
 
     @Override
     public String getTagType() {
-        return "ordered list";
+        return "unordered list";
     }
 
     @Override
     public void addListItem(IListItem item) {
+        addChild(item);
         items.add(item);
     }
 
@@ -133,5 +137,10 @@ public class UnorderedList implements IUnorderedList {
     @Override
     public String getID() {
         return id;
+    }
+    
+    @Override
+    public String getTagAbbr() {
+        return "ul";
     }
 }

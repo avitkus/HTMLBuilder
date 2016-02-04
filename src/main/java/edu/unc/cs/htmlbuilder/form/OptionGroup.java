@@ -125,4 +125,9 @@ public class OptionGroup implements IOptionGroup {
     public String getID() {
         return id;
     }
+    
+    @Override
+    public String getTagAbbr() {
+        return "optgroup";
+    }
 }

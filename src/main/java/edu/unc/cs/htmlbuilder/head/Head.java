@@ -99,4 +99,9 @@ public class Head implements IHead {
     public String getID() {
         return id;
     }
+    
+    @Override
+    public String getTagAbbr() {
+        return "head";
+    }
 }

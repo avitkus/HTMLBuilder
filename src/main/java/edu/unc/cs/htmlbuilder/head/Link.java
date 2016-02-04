@@ -121,4 +121,9 @@ public class Link implements ILink {
     public String getID() {
         return id;
     }
+    
+    @Override
+    public String getTagAbbr() {
+        return "link";
+    }
 }

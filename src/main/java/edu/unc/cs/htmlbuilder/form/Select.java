@@ -223,4 +223,9 @@ public class Select implements ISelect {
     public ScriptGenerator getOnchange() {
         return events.getEvent("onchange");
     }
+
+    @Override
+    public String getTagAbbr() {
+        return "select";
+    }
 }

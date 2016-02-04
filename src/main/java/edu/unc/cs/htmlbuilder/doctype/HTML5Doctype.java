@@ -17,4 +17,9 @@ public class HTML5Doctype implements IDoctype {
     public String getTagType() {
         return "doctype";
     }
+    
+    @Override
+    public String getTagAbbr() {
+        return "!DOCTYPE";
+    }
 }

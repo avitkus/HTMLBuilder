@@ -195,4 +195,9 @@ public class TableHeader implements ITableHeader {
     public String getID() {
         return id;
     }
+    
+    @Override
+    public String getTagAbbr() {
+        return "th";
+    }
 }

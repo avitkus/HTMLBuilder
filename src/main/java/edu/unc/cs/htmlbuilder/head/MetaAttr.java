@@ -84,11 +84,7 @@ public class MetaAttr implements IMetaAttr {
             text.append(" id=\"").append(id).append("\"");
         }
         text.append(attrs.getHTML());
-        for (int i = 0; i < attributes.size(); i ++) {
-            String[] attr = attributes.get(i);
-            if (i > 0) {
-                text.append(";");
-            }
+        for (String[] attr : attributes) {
             text.append(" ").append(attr[0]).append("=\"").append(attr[1]).append("\"");
         }
         text.append(">");
@@ -98,5 +94,10 @@ public class MetaAttr implements IMetaAttr {
     @Override
     public void removeAttribute(String name) {
         attrs.removeAttribute(name);
+    }
+    
+    @Override
+    public String getTagAbbr() {
+        return "meta";
     }
 }

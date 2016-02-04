@@ -148,4 +148,9 @@ public class Form implements IForm {
     public String getID() {
         return id;
     }
+    
+    @Override
+    public String getTagAbbr() {
+        return "form";
+    }
 }

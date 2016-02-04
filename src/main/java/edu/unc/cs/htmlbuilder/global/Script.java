@@ -174,4 +174,9 @@ public class Script implements IScript {
             return Optional.of(charset);
         }
     }
+    
+    @Override
+    public String getTagAbbr() {
+        return "script";
+    }
 }

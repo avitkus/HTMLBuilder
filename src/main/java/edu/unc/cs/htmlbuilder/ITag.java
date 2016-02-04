@@ -9,4 +9,6 @@ public interface ITag {
     public String getText(int depth);
 
     public String getTagType();
+    
+    public String getTagAbbr();
 }

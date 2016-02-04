@@ -128,4 +128,10 @@ public class Navigation implements INavigation {
     public String getID() {
         return id;
     }
+    
+    
+    @Override
+    public String getTagAbbr() {
+        return "nav";
+    }
 }

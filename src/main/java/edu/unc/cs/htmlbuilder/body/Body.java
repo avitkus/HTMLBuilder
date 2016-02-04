@@ -137,4 +137,9 @@ public class Body implements IBody {
     public void removeAttribute(String name) {
         attrs.removeAttribute(name);
     }
+
+    @Override
+    public String getTagAbbr() {
+        return "body";
+    }
 }

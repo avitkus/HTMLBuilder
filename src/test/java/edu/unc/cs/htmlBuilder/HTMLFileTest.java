@@ -169,6 +169,7 @@ public class HTMLFileTest {
                 + "  </body>\n"
                 + "</html>";
         String resultHtml = html.getHTML();
+        System.out.println(resultHtml);
         assertEquals(expectedHtml, resultHtml);
     }
 

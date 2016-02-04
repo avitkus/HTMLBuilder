@@ -151,4 +151,9 @@ public class FieldSet implements IFieldSet {
     public String getLegend() {
         return legend.orElse("");
     }
+    
+    @Override
+    public String getTagAbbr() {
+        return "fieldset";
+    }
 }

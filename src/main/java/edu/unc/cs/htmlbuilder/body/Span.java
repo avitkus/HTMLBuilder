@@ -124,4 +124,9 @@ public class Span implements ISpan {
     public String getID() {
         return id;
     }
+    
+    @Override
+    public String getTagAbbr() {
+        return "span";
+    }
 }

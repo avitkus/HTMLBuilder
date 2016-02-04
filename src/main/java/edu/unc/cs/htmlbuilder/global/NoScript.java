@@ -96,4 +96,9 @@ public class NoScript implements INoScript {
     public void removeAttribute(String name) {
         attrs.removeAttribute(name);
     }
+    
+    @Override
+    public String getTagAbbr() {
+        return "noscript";
+    }
 }

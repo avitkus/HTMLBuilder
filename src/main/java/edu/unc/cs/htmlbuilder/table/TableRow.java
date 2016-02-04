@@ -201,4 +201,9 @@ public class TableRow implements ITableRow {
     public String getID() {
         return id;
     }
+    
+    @Override
+    public String getTagAbbr() {
+        return "tr";
+    }
 }

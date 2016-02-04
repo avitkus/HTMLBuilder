@@ -162,4 +162,9 @@ public class Label implements ILabel {
     public String getID() {
         return id;
     }
+    
+    @Override
+    public String getTagAbbr() {
+        return "label";
+    }
 }

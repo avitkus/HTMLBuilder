@@ -93,4 +93,10 @@ public class HorizontalRule implements IHorizontalRule {
     public String getID() {
         return id;
     }
+    
+    
+    @Override
+    public String getTagAbbr() {
+        return "hr";
+    }
 }

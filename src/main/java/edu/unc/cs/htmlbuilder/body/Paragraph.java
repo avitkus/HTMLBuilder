@@ -128,4 +128,9 @@ public class Paragraph implements IParagraph {
     public String getID() {
         return id;
     }
+    
+    @Override
+    public String getTagAbbr() {
+        return "p";
+    }
 }

@@ -124,4 +124,9 @@ public class ListItem implements IListItem {
     public String getID() {
         return id;
     }
+    
+    @Override
+    public String getTagAbbr() {
+        return "li";
+    }
 }

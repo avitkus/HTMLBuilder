@@ -195,4 +195,10 @@ public class TableData implements ITableData {
     public String getID() {
         return id;
     }
+    
+    
+    @Override
+    public String getTagAbbr() {
+        return "td";
+    }
 }

@@ -88,20 +88,20 @@ public class Text implements IText {
     public String getText(int indent) {
         StringBuilder html = new StringBuilder();
         html.append(Offsetter.indent(indent));
-        if (!styleManager.isEmpty() || className != "" || id != "") {
+        if (!styleManager.isEmpty() || !className.isEmpty() || !id.isEmpty()) {
             html.append("<span");
             if (!styleManager.isEmpty()) {
                 html.append(styleManager.getStyleHTML()).append(">");
             }
-            if (className != "") {
+            if (!className.isEmpty()) {
                 html.append(" class=\"").append(className).append("\"");
             }
-            if (id != "") {
+            if (!id.isEmpty()) {
                 html.append(" id=\"").append(id).append("\"");
             }
         }
         html.append(getStyleOpenTags()).append(text).append(getStyleEndTags());
-        if (!styleManager.isEmpty() || className != "" || id != "") {
+        if (!styleManager.isEmpty() || !className.isEmpty() || !id.isEmpty()) {
             html.append("</span>");
         }
         for (IText text : textParts) {
@@ -242,5 +242,10 @@ public class Text implements IText {
     @Override
     public String getID() {
         return id;
+    }
+
+    @Override
+    public String getTagAbbr() {
+        return "text";
     }
 }

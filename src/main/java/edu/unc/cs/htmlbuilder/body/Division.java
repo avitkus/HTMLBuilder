@@ -130,4 +130,9 @@ public class Division implements IDivision {
     public String getID() {
         return id;
     }
+    
+    @Override
+    public String getTagAbbr() {
+        return "div";
+    }
 }

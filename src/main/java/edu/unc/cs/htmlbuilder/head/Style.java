@@ -93,4 +93,9 @@ public class Style implements IStyle {
     public String getID() {
         return id;
     }
+    
+    @Override
+    public String getTagAbbr() {
+        return "style";
+    }
 }

@@ -142,4 +142,10 @@ public class Header implements IHeader {
     public String getID() {
         return id;
     }
+    
+    
+    @Override
+    public String getTagAbbr() {
+        return "h" + level;
+    }
 }

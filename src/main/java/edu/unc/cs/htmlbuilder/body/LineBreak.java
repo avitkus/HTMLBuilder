@@ -69,4 +69,9 @@ public class LineBreak implements ILineBreak {
     public String getID() {
         return id;
     }
+    
+    @Override
+    public String getTagAbbr() {
+        return "br";
+    }
 }
