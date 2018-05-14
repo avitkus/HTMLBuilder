@@ -14,7 +14,7 @@ import edu.unc.cs.htmlBuilder.util.TextScrubber;
  * @author Andrew Vitkus
  *
  */
-public class Text implements IText {
+public class Text extends AbstractBodyElement implements IText {
 
     private ArrayList<IText> textParts;
     private ArrayList<TextStyle> textStyles;
@@ -29,6 +29,7 @@ public class Text implements IText {
     }
 
     public Text(String text, TextStyle... styles) {
+        super(false, false);
         textParts = new ArrayList<>();
         this.textStyles = new ArrayList<>();
         attrs = new AttributeManager();

@@ -12,7 +12,7 @@ import edu.unc.cs.htmlBuilder.util.StyleManager;
  * @author Andrew Vitkus
  *
  */
-public class Division implements IDivision {
+public class Division extends AbstractBodyElement implements IDivision {
 
     private final ArrayList<IBodyElement> contents;
     private final IStyleManager styleManager;
@@ -21,6 +21,7 @@ public class Division implements IDivision {
     private String id;
 
     public Division(IBodyElement... elements) {
+        super(false, true);
         contents = new ArrayList<>();
         styleManager = new StyleManager();
         attrs = new AttributeManager();
@@ -43,7 +44,7 @@ public class Division implements IDivision {
             html.append(" id=\"").append(id).append("\"");
         }
         html.append(styleManager.getStyleHTML());
-        html.append(attrs.getHTML()).append(">\n");
+        html.append(attrs.getHTML()).append(getEventManager().getHTML()).append(">\n");
         for (IBodyElement content : contents) {
             html.append(content.getText(indent)).append("\n");
         }

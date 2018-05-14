@@ -1,5 +1,6 @@
 package edu.unc.cs.htmlBuilder.form.input;
 
+import edu.unc.cs.htmlBuilder.form.AbstractFormElement;
 import edu.unc.cs.htmlBuilder.util.AttributeManager;
 import edu.unc.cs.htmlBuilder.util.IAttributeManager;
 import edu.unc.cs.htmlBuilder.util.Offsetter;
@@ -8,13 +9,14 @@ import edu.unc.cs.htmlBuilder.util.Offsetter;
  * @author Andrew Vitkus
  *
  */
-public abstract class Input implements IInput {
+public abstract class Input extends AbstractFormElement implements IInput {
 
     private IAttributeManager attrs;
     private String className;
     public String id;
 
     public Input() {
+        super(false, false);
         attrs = new AttributeManager();
         className = "";
         id = "";
@@ -30,7 +32,9 @@ public abstract class Input implements IInput {
         if (id != "") {
             html.append(" id=\"").append(id).append("\"");
         }
-        html.append(attrs.getHTML()).append(">");
+        html.append(attrs.getHTML());
+        html.append(getEventManager().getHTML());
+        html.append(">");
         return html.toString();
     }
 

@@ -8,7 +8,7 @@ import edu.unc.cs.htmlBuilder.util.AttributeManager;
 import edu.unc.cs.htmlBuilder.util.IAttributeManager;
 import edu.unc.cs.htmlBuilder.util.Offsetter;
 
-public class FieldSet implements IFieldSet {
+public class FieldSet extends AbstractFormElement implements IFieldSet {
 
     private final IAttributeManager attrs;
     private final ArrayList<IHTMLElement> fields;
@@ -20,6 +20,7 @@ public class FieldSet implements IFieldSet {
      *
      */
     public FieldSet() {
+        super (false, true);
         attrs = new AttributeManager();
         fields = new ArrayList<>(5);
         className = "";

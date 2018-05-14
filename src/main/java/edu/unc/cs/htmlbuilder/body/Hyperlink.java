@@ -13,7 +13,7 @@ import edu.unc.cs.htmlBuilder.util.StyleManager;
  * @author Andrew Vitkus
  *
  */
-public class Hyperlink implements IHyperlink {
+public class Hyperlink extends AbstractBodyElement implements IHyperlink {
 
     private final IAttributeManager attrs;
     private final IStyleManager styleManager;
@@ -24,6 +24,7 @@ public class Hyperlink implements IHyperlink {
     private LinkTarget target;
 
     public Hyperlink() {
+        super(false, true);
         className = "";
         id = "";
         attrs = new AttributeManager();
@@ -43,7 +44,7 @@ public class Hyperlink implements IHyperlink {
         if (!id.isEmpty()) {
             text.append(" id=\"").append(id).append("\"");
         }
-        text.append(styleManager.getStyleHTML()).append(attrs.getHTML());
+        text.append(styleManager.getStyleHTML()).append(attrs.getHTML()).append(getEventManager().getHTML());
         text.append(" href=\"").append(href).append("\"");
         text.append(" target=\"_").append(target.name().toLowerCase()).append("\">\n");
         for (IBodyElement element : contents) {

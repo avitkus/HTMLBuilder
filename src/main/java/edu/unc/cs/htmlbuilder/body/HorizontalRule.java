@@ -10,7 +10,7 @@ import edu.unc.cs.htmlBuilder.util.StyleManager;
  * @author Andrew Vitkus
  *
  */
-public class HorizontalRule implements IHorizontalRule {
+public class HorizontalRule extends AbstractBodyElement implements IHorizontalRule {
 
     private IAttributeManager attrs;
     private StyleManager styleManager;
@@ -18,6 +18,7 @@ public class HorizontalRule implements IHorizontalRule {
     public String id;
 
     public HorizontalRule() {
+        super(true, false);
         attrs = new AttributeManager();
         styleManager = new StyleManager();
         className = "";
@@ -26,7 +27,7 @@ public class HorizontalRule implements IHorizontalRule {
 
     @Override
     public String getText(int depth) {
-        return Offsetter.indent(depth) + "<hr" + (className == "" ? "" : " class =\"" + className + "\"") + (id == "" ? "" : " id=\"" + id + "\"") + styleManager.getStyleHTML() + attrs.getHTML() + ">";
+        return Offsetter.indent(depth) + "<hr" + (className == "" ? "" : " class =\"" + className + "\"") + (id == "" ? "" : " id=\"" + id + "\"") + styleManager.getStyleHTML() + attrs.getHTML() + getEventManager().getHTML() + ">";
     }
 
     @Override

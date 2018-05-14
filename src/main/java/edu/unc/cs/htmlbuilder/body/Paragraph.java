@@ -12,7 +12,7 @@ import edu.unc.cs.htmlBuilder.util.StyleManager;
  * @author Andrew Vitkus
  *
  */
-public class Paragraph implements IParagraph {
+public class Paragraph extends AbstractBodyElement implements IParagraph {
 
     private ArrayList<IBodyElement> contents;
     private IAttributeManager attrs;
@@ -21,6 +21,7 @@ public class Paragraph implements IParagraph {
     public String id;
 
     public Paragraph(IBodyElement... elements) {
+        super(false, true);
         contents = new ArrayList<>();
         className = "";
         id = "";
@@ -41,7 +42,7 @@ public class Paragraph implements IParagraph {
         if (id != "") {
             text.append(" id=\"").append(id).append("\"");
         }
-        text.append(styleManager.getStyleHTML()).append(attrs.getHTML()).append(">\n");
+        text.append(styleManager.getStyleHTML()).append(attrs.getHTML()).append(getEventManager().getHTML()).append(">\n");
         for (IBodyElement row : contents) {
             text.append(row.getText(indent)).append("\n");
         }

@@ -8,13 +8,14 @@ import edu.unc.cs.htmlBuilder.util.Offsetter;
  * @author Andrew Vitkus
  *
  */
-public class LineBreak implements ILineBreak {
+public class LineBreak extends AbstractBodyElement implements ILineBreak {
 
     private IAttributeManager attrs;
     private String className;
     public String id;
 
     public LineBreak() {
+        super(true, false);
         attrs = new AttributeManager();
         className = "";
         id = "";
@@ -22,7 +23,7 @@ public class LineBreak implements ILineBreak {
 
     @Override
     public String getText(int depth) {
-        return Offsetter.indent(depth) + "<br" + (className == "" ? "" : " class =\"" + className + "\"") + (id == "" ? "" : " id=\"" + id + "\"") + attrs.getHTML() + ">";
+        return Offsetter.indent(depth) + "<br" + (className == "" ? "" : " class =\"" + className + "\"") + (id == "" ? "" : " id=\"" + id + "\"") + attrs.getHTML() + getEventManager().getHTML() + ">";
     }
 
     @Override

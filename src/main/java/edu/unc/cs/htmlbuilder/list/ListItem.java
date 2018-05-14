@@ -1,5 +1,6 @@
 package edu.unc.cs.htmlBuilder.list;
 
+import edu.unc.cs.htmlBuilder.body.AbstractBodyElement;
 import java.util.ArrayList;
 
 import edu.unc.cs.htmlBuilder.body.IBodyElement;
@@ -13,7 +14,7 @@ import edu.unc.cs.htmlBuilder.util.StyleManager;
  * @author Andrew Vitkus
  *
  */
-public class ListItem implements IListItem {
+public class ListItem extends AbstractBodyElement implements IListItem {
 
     private ArrayList<IBodyElement> contents;
     private IAttributeManager attrs;
@@ -22,6 +23,7 @@ public class ListItem implements IListItem {
     public String id;
 
     public ListItem(IBodyElement... elements) {
+        super(false, true);
         styleManager = new StyleManager();
         attrs = new AttributeManager();
         contents = new ArrayList<>();

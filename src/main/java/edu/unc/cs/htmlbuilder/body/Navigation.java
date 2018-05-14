@@ -12,7 +12,7 @@ import edu.unc.cs.htmlBuilder.util.StyleManager;
  * @author Andrew Vitkus
  *
  */
-public class Navigation implements INavigation {
+public class Navigation extends AbstractBodyElement implements INavigation {
 
     private final ArrayList<IBodyElement> contents;
     private final IStyleManager styleManager;
@@ -21,6 +21,7 @@ public class Navigation implements INavigation {
     private String id;
 
     public Navigation(IBodyElement... elements) {
+        super(false, true);
         contents = new ArrayList<>(5);
         styleManager = new StyleManager();
         attrs = new AttributeManager();
@@ -41,7 +42,7 @@ public class Navigation implements INavigation {
             html.append(" id=\"").append(id).append("\"");
         }
         html.append(styleManager.getStyleHTML());
-        html.append(attrs.getHTML()).append(">\n");
+        html.append(attrs.getHTML()).append(getEventManager().getHTML()).append(">\n");
         for (IBodyElement content : contents) {
             html.append(content.getText(indent)).append("\n");
         }

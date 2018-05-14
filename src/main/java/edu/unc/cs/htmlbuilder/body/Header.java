@@ -11,7 +11,7 @@ import edu.unc.cs.htmlBuilder.util.TextScrubber;
  * @author Andrew Vitkus
  *
  */
-public class Header implements IHeader {
+public class Header extends AbstractBodyElement implements IHeader {
 
     private IAttributeManager attrs;
     private int level;
@@ -29,6 +29,7 @@ public class Header implements IHeader {
     }
 
     public Header(String text, int level) {
+        super(false, false);
         setText(text);
         setLevel(level);
         attrs = new AttributeManager();
@@ -63,7 +64,7 @@ public class Header implements IHeader {
         if (id != "") {
             html.append(" id=\"").append(id).append("\"");
         }
-        html.append(styleManager.getStyleHTML()).append(attrs.getHTML()).append(">");
+        html.append(styleManager.getStyleHTML()).append(attrs.getHTML()).append(getEventManager().getHTML()).append(">");
         html.append(text).append("</h").append(getLevel()).append(">");
         return html.toString();
     }

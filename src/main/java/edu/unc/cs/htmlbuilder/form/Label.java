@@ -9,7 +9,7 @@ import edu.unc.cs.htmlBuilder.util.Offsetter;
  * @author Andrew Vitkus
  *
  */
-public class Label implements ILabel {
+public class Label extends AbstractFormElement implements ILabel {
 
     private IAttributeManager attrs;
     private IFormElement element;
@@ -22,6 +22,7 @@ public class Label implements ILabel {
      *
      */
     public Label() {
+        super(false, false);
         attrs = new AttributeManager();
         element = null;
         label = null;
@@ -40,7 +41,9 @@ public class Label implements ILabel {
         if (id != "") {
             html.append(" id=\"").append(id).append("\"");
         }
-        html.append(attrs.getHTML()).append(">\n");
+        html.append(attrs.getHTML());
+        html.append(getEventManager().getHTML());
+        html.append(">\n");
         if (element != null) {
             if (labelFirst) {
                 if (label != null) {

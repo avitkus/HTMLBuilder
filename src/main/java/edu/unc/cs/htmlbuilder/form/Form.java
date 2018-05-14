@@ -1,5 +1,6 @@
 package edu.unc.cs.htmlBuilder.form;
 
+import edu.unc.cs.htmlBuilder.body.AbstractBodyElement;
 import java.util.ArrayList;
 
 import edu.unc.cs.htmlBuilder.body.IBodyElement;
@@ -12,7 +13,7 @@ import edu.unc.cs.htmlBuilder.util.Offsetter;
  * @author Andrew Vitkus
  *
  */
-public class Form implements IForm {
+public class Form extends AbstractBodyElement implements IForm {
 
     private IAttributeManager attrs;
     private ArrayList<IBodyElement> elements;
@@ -20,6 +21,7 @@ public class Form implements IForm {
     public String id;
 
     public Form() {
+        super(false, true);
         attrs = new AttributeManager();
         elements = new ArrayList<>();
         className = "";

@@ -12,7 +12,7 @@ import edu.unc.cs.htmlBuilder.util.StyleManager;
  * @author Andrew Vitkus
  *
  */
-public class Span implements ISpan {
+public class Span extends AbstractBodyElement implements ISpan {
 
     private ArrayList<IBodyElement> contents;
     private IAttributeManager attrs;
@@ -21,6 +21,7 @@ public class Span implements ISpan {
     public String id;
 
     public Span(IBodyElement... elements) {
+        super(false, true);
         contents = new ArrayList<>();
         attrs = new AttributeManager();
         styleManager = new StyleManager();
@@ -42,7 +43,7 @@ public class Span implements ISpan {
         if (id != "") {
             html.append(" id=\"").append(id).append("\"");
         }
-        html.append(styleManager.getStyleHTML()).append(attrs.getHTML()).append(">\n");
+        html.append(styleManager.getStyleHTML()).append(attrs.getHTML()).append(getEventManager().getHTML()).append(">\n");
         for (IBodyElement content : contents) {
             html.append(content.getText(indent)).append("\n");
         }

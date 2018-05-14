@@ -8,7 +8,7 @@ import edu.unc.cs.htmlBuilder.util.Offsetter;
  * @author Andrew Vitkus
  *
  */
-public class TextArea implements ITextArea {
+public class TextArea extends AbstractFormElement implements ITextArea {
 
     private IAttributeManager attrs;
     private String text;
@@ -16,6 +16,7 @@ public class TextArea implements ITextArea {
     public String id;
 
     public TextArea() {
+        super(false, false);
         attrs = new AttributeManager();
         text = "";
         className = "";
@@ -33,7 +34,9 @@ public class TextArea implements ITextArea {
         if (id != "") {
             html.append(" id=\"").append(id).append("\"");
         }
-        html.append(attrs.getHTML()).append(">\n");
+        html.append(attrs.getHTML());
+        html.append(getEventManager().getHTML());
+        html.append(">\n");
         html.append(Offsetter.indent(depth)).append(text).append("\n");
         html.append(Offsetter.indent(depth - 1)).append("</textarea>");
 

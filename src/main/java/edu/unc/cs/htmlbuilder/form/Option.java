@@ -8,7 +8,7 @@ import edu.unc.cs.htmlBuilder.util.Offsetter;
  * @author Andrew Vitkus
  *
  */
-public class Option implements IOption {
+public class Option extends AbstractFormElement implements IOption {
 
     private IAttributeManager attrs;
     private String text;
@@ -16,6 +16,7 @@ public class Option implements IOption {
     public String id;
 
     public Option() {
+        super(false, false);
         attrs = new AttributeManager();
         text = "";
         className = "";
@@ -33,7 +34,9 @@ public class Option implements IOption {
         if (!id.isEmpty()) {
             html.append(" id=\"").append(id).append("\"");
         }
-        html.append(attrs.getHTML()).append(">").append(text).append("</option>");
+        html.append(attrs.getHTML());
+        html.append(getEventManager().getHTML());
+        html.append(">").append(text).append("</option>");
 
         return html.toString();
     }

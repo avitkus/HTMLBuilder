@@ -1,23 +1,13 @@
-package edu.unc.cs.htmlBuilder.form;
+package edu.unc.cs.htmlBuilder.event;
 
 import edu.unc.cs.htmlBuilder.util.ScriptGenerator;
-import edu.unc.cs.htmlBuilder.body.AbstractBodyElement;
 
 /**
  *
  * @author Andrew Vitkus
  */
-public abstract class AbstractFormElement extends AbstractBodyElement implements IFormElement {
+public class AbstractFormElementEventHandler extends AbstractBodyElementEventHandler implements IFormEventHandler {
 
-    public AbstractFormElement(boolean selfClosing, boolean hasChildren) {
-        super(selfClosing, hasChildren);
-    }
-
-    @Override
-    public String getTagType() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-    
     @Override
     public void setOnBlur(ScriptGenerator script) {
         addEvent("onblur", script);

@@ -9,10 +9,9 @@ import edu.unc.cs.htmlBuilder.util.IEventManager;
 import edu.unc.cs.htmlBuilder.util.Offsetter;
 import edu.unc.cs.htmlBuilder.util.ScriptGenerator;
 
-public class Select implements ISelect {
+public class Select extends AbstractFormElement implements ISelect {
 
     private final IAttributeManager attrs;
-    private final IEventManager events;
     private final ArrayList<IHTMLElement> options;
     private String className;
     private String id;
@@ -21,8 +20,8 @@ public class Select implements ISelect {
      *
      */
     public Select() {
+        super(false, true);
         attrs = new AttributeManager();
-        events = new EventManager();
         options = new ArrayList<>(5);
         className = "";
         id = "";
@@ -74,7 +73,7 @@ public class Select implements ISelect {
             html.append(" id=\"").append(id).append("\"");
         }
         html.append(attrs.getHTML());
-        html.append(events.getHTML()).append(">\n");
+        html.append(getEventManager().getHTML()).append(">\n");
         for (IHTMLElement option : options) {
             html.append(option.getText(depth)).append("\n");
         }
@@ -212,16 +211,6 @@ public class Select implements ISelect {
     @Override
     public String getID() {
         return id;
-    }
-
-    @Override
-    public void setOnchange(ScriptGenerator script) {
-        events.addEvent("onchange", script);
-    }
-
-    @Override
-    public ScriptGenerator getOnchange() {
-        return events.getEvent("onchange");
     }
 
     @Override

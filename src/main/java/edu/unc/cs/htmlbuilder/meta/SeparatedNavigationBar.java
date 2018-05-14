@@ -8,6 +8,7 @@ package edu.unc.cs.htmlBuilder.meta;
 import java.util.ArrayList;
 import java.util.Arrays;
 import edu.unc.cs.htmlBuilder.attributes.LinkTarget;
+import edu.unc.cs.htmlBuilder.body.AbstractBodyElement;
 import edu.unc.cs.htmlBuilder.body.Hyperlink;
 import edu.unc.cs.htmlBuilder.body.IBodyElement;
 import edu.unc.cs.htmlBuilder.body.IHyperlink;
@@ -18,7 +19,7 @@ import edu.unc.cs.htmlBuilder.util.IStyleManager;
 import edu.unc.cs.htmlBuilder.util.Offsetter;
 import edu.unc.cs.htmlBuilder.util.StyleManager;
 
-public class SeparatedNavigationBar implements INavigationBar {
+public class SeparatedNavigationBar extends AbstractBodyElement implements INavigationBar {
 
     private final ArrayList<IHyperlink> contents;
     private final IStyleManager styleManager;
@@ -28,6 +29,7 @@ public class SeparatedNavigationBar implements INavigationBar {
     private String separator;
 
     public SeparatedNavigationBar(IHyperlink... elements) {
+        super(false, true);
         contents = new ArrayList<>(5);
         styleManager = new StyleManager();
         attrs = new AttributeManager();

@@ -8,7 +8,7 @@ import edu.unc.cs.htmlBuilder.util.IAttributeManager;
 import edu.unc.cs.htmlBuilder.util.IStyleManager;
 import edu.unc.cs.htmlBuilder.util.StyleManager;
 import edu.unc.cs.htmlBuilder.util.Offsetter;
-import edu.unc.cs.htmlbuilder.body.AbstractBodyElement;
+import edu.unc.cs.htmlBuilder.body.AbstractBodyElement;
 
 /**
  * @author Andrew Vitkus

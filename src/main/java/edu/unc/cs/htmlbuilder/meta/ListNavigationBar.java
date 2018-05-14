@@ -2,6 +2,7 @@ package edu.unc.cs.htmlBuilder.meta;
 
 import java.util.ArrayList;
 import edu.unc.cs.htmlBuilder.attributes.LinkTarget;
+import edu.unc.cs.htmlBuilder.body.AbstractBodyElement;
 import edu.unc.cs.htmlBuilder.body.Hyperlink;
 import edu.unc.cs.htmlBuilder.body.IHyperlink;
 import edu.unc.cs.htmlBuilder.body.INavigation;
@@ -14,7 +15,7 @@ import edu.unc.cs.htmlBuilder.list.UnorderedList;
 import edu.unc.cs.htmlBuilder.util.AttributeManager;
 import edu.unc.cs.htmlBuilder.util.IAttributeManager;
 
-public class ListNavigationBar implements INavigationBar {
+public class ListNavigationBar extends AbstractBodyElement implements INavigationBar {
 
     private final IUnorderedList linkList;
     private final IAttributeManager attrs;
@@ -23,6 +24,7 @@ public class ListNavigationBar implements INavigationBar {
     private String separator;
 
     public ListNavigationBar(IHyperlink... elements) {
+        super(false, true);
         linkList = new UnorderedList();
         attrs = new AttributeManager();
         className = "";

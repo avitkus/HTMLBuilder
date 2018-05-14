@@ -2,6 +2,7 @@ package edu.unc.cs.htmlBuilder.meta;
 
 import java.util.ArrayList;
 import edu.unc.cs.htmlBuilder.attributes.LinkTarget;
+import edu.unc.cs.htmlBuilder.body.AbstractBodyElement;
 import edu.unc.cs.htmlBuilder.body.Hyperlink;
 import edu.unc.cs.htmlBuilder.body.IBodyElement;
 import edu.unc.cs.htmlBuilder.body.IHyperlink;
@@ -15,7 +16,7 @@ import edu.unc.cs.htmlBuilder.util.IAttributeManager;
  *
  * @author Andrew Vitkus
  */
-public class PlainNavigationBar implements INavigationBar {
+public class PlainNavigationBar extends AbstractBodyElement implements INavigationBar {
 
     private final INavigation nav;
     private final IAttributeManager attrs;
@@ -24,6 +25,7 @@ public class PlainNavigationBar implements INavigationBar {
     private String separator;
 
     public PlainNavigationBar(IHyperlink... elements) {
+        super(false, true);
         nav = new Navigation(elements);
         attrs = new AttributeManager();
         className = "";

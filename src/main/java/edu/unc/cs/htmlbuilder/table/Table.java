@@ -1,5 +1,6 @@
 package edu.unc.cs.htmlBuilder.table;
 
+import edu.unc.cs.htmlBuilder.body.AbstractBodyElement;
 import java.util.ArrayList;
 
 import edu.unc.cs.htmlBuilder.util.AttributeManager;
@@ -13,7 +14,7 @@ import edu.unc.cs.htmlBuilder.util.StyleManager;
  * @author Andrew Vitkus
  *
  */
-public class Table implements ITable {
+public class Table extends AbstractBodyElement implements ITable {
 
     private ArrayList<ITableRow> rows;
     private IAttributeManager attrs;
@@ -23,6 +24,7 @@ public class Table implements ITable {
     private String id;
 
     public Table(ITableRow... rows) {
+        super(false, true);
         styleManager = new StyleManager();
         attrs = new AttributeManager();
         this.rows = new ArrayList<>();

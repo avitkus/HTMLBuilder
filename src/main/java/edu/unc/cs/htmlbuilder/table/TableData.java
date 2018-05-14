@@ -1,5 +1,6 @@
 package edu.unc.cs.htmlBuilder.table;
 
+import edu.unc.cs.htmlBuilder.body.AbstractBodyElement;
 import java.util.ArrayList;
 
 import edu.unc.cs.htmlBuilder.body.IBodyElement;
@@ -13,7 +14,7 @@ import edu.unc.cs.htmlBuilder.util.StyleManager;
  * @author Andrew Vitkus
  *
  */
-public class TableData implements ITableData {
+public class TableData extends AbstractBodyElement implements ITableData {
 
     private ArrayList<IBodyElement> contents;
     private IStyleManager styleManager;
@@ -22,6 +23,7 @@ public class TableData implements ITableData {
     private String id;
 
     public TableData(IBodyElement... elements) {
+        super(false, true);
         styleManager = new StyleManager();
         attrs = new AttributeManager();
         contents = new ArrayList<>();

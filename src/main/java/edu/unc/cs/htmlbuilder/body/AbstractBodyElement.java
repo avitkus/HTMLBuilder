@@ -1,25 +1,22 @@
-package edu.unc.cs.htmlbuilder.body;
+package edu.unc.cs.htmlBuilder.body;
 
 import edu.unc.cs.htmlBuilder.IHTMLElement;
-import edu.unc.cs.htmlBuilder.body.IBodyElement;
-import edu.unc.cs.htmlBuilder.event.IWindowEventHandler;
+import edu.unc.cs.htmlBuilder.event.AbstractBodyElementEventHandler;
+import edu.unc.cs.htmlBuilder.event.IMouseEventHandler;
 import edu.unc.cs.htmlBuilder.util.AttributeManager;
-import edu.unc.cs.htmlBuilder.util.EventManager;
 import edu.unc.cs.htmlBuilder.util.IAttributeManager;
-import edu.unc.cs.htmlBuilder.util.IEventManager;
 import edu.unc.cs.htmlBuilder.util.Offsetter;
-import edu.unc.cs.htmlBuilder.util.ScriptGenerator;
 import java.util.ArrayList;
 import java.util.Arrays;
+import edu.unc.cs.htmlBuilder.event.IObjectEventHandler;
 
 /**
  *
  * @author Andrew Vitkus
  */
-public abstract class AbstractBodyElement implements IBodyElement, IWindowEventHandler {
+public abstract class AbstractBodyElement extends AbstractBodyElementEventHandler implements IBodyElement, IObjectEventHandler, IMouseEventHandler {
     
     private final IAttributeManager attrs;
-    private final IEventManager events;
     private final ArrayList<IHTMLElement> children;
     private String className;
     private String id;
@@ -29,7 +26,6 @@ public abstract class AbstractBodyElement implements IBodyElement, IWindowEventH
 
     public AbstractBodyElement(boolean selfClosing, boolean hasChildren) {
         attrs = new AttributeManager();
-        events = new EventManager();
         children = new ArrayList<>(5);
         className = "";
         id = "";
@@ -51,7 +47,7 @@ public abstract class AbstractBodyElement implements IBodyElement, IWindowEventH
             html.append(" id=\"").append(id).append("\"");
         }
         html.append(attrs.getHTML());
-        html.append(events.getHTML());
+        html.append(getEventManager().getHTML());
         if (selfClosing) {
             html.append(" />");
         } else {
@@ -120,24 +116,6 @@ public abstract class AbstractBodyElement implements IBodyElement, IWindowEventH
     @Override
     public String getID() {
         return id;
-    }
-    
-    public void addEvent(String name, ScriptGenerator script) {
-        events.addEvent(name, script);
-    }
-    
-    public ScriptGenerator getEvent(String name) {
-        return events.getEvent(name);
-    }
-
-    @Override
-    public void setOnload(ScriptGenerator script) {
-        addEvent("onload", script);
-    }
-
-    @Override
-    public ScriptGenerator getOnload() {
-        return getEvent("onload");
     }
     
     @Override

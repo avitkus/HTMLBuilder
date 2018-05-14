@@ -1,5 +1,6 @@
 package edu.unc.cs.htmlBuilder.list;
 
+import edu.unc.cs.htmlBuilder.body.AbstractBodyElement;
 import java.util.ArrayList;
 
 import edu.unc.cs.htmlBuilder.body.IBodyElement;
@@ -13,7 +14,7 @@ import edu.unc.cs.htmlBuilder.util.StyleManager;
  * @author Andrew Vitkus
  *
  */
-public class OrderedList implements IOrderedList {
+public class OrderedList extends AbstractBodyElement implements IOrderedList {
 
     private ArrayList<IListItem> items;
     private IAttributeManager attrs;
@@ -22,6 +23,7 @@ public class OrderedList implements IOrderedList {
     public String id;
 
     public OrderedList(IListItem... items) {
+        super(false, true);
         styleManager = new StyleManager();
         attrs = new AttributeManager();
         this.items = new ArrayList<>();

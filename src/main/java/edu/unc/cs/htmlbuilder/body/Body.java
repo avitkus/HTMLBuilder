@@ -1,5 +1,6 @@
 package edu.unc.cs.htmlBuilder.body;
 
+import edu.unc.cs.htmlBuilder.event.AbstractObjectEventHandler;
 import java.util.ArrayList;
 import java.util.Arrays;
 import edu.unc.cs.htmlBuilder.util.AttributeManager;
@@ -15,19 +16,17 @@ import edu.unc.cs.htmlBuilder.util.StyleManager;
  * @author Andrew Vitkus
  *
  */
-public class Body implements IBody {
+public class Body extends AbstractObjectEventHandler implements IBody {
 
     private String id;
     private final IAttributeManager attrs;
     private String className;
     private final ArrayList<IBodyElement> elements;
-    private final IEventManager events;
     private final IStyleManager styleManager;
 
     public Body(IBodyElement... elements) {
         attrs = new AttributeManager();
         styleManager = new StyleManager();
-        events = new EventManager();
         this.elements = new ArrayList<>(20);
         className = "";
         id = "";
@@ -95,16 +94,6 @@ public class Body implements IBody {
     }
 
     @Override
-    public ScriptGenerator getOnload() {
-        return events.getEvent("onload");
-    }
-
-    @Override
-    public void setOnload(ScriptGenerator script) {
-        events.addEvent("onload", script);
-    }
-
-    @Override
     public String[][] getStyles() {
         return styleManager.getStyles();
     }
@@ -125,7 +114,7 @@ public class Body implements IBody {
             text.append(" id=\"").append(id).append("\"");
         }
         text.append(styleManager.getStyleHTML()).append(attrs.getHTML());
-        text.append(events.getHTML()).append(">\n");
+        text.append(getEventManager().getHTML()).append(">\n");
         for (IBodyElement element : elements) {
             text.append(element.getText(indent)).append("\n");
         }

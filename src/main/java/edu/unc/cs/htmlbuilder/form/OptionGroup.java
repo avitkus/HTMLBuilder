@@ -10,7 +10,7 @@ import edu.unc.cs.htmlBuilder.util.Offsetter;
  * @author Andrew Vitkus
  *
  */
-public class OptionGroup implements IOptionGroup {
+public class OptionGroup extends AbstractFormElement implements IOptionGroup {
 
     private IAttributeManager attrs;
     private ArrayList<IOption> options;
@@ -21,6 +21,7 @@ public class OptionGroup implements IOptionGroup {
      *
      */
     public OptionGroup() {
+        super(false, true);
         attrs = new AttributeManager();
         options = new ArrayList<>();
         className = "";
@@ -38,7 +39,9 @@ public class OptionGroup implements IOptionGroup {
         if (id != "") {
             html.append(" id=\"").append(id).append("\"");
         }
-        html.append(attrs.getHTML()).append(">\n");
+        html.append(attrs.getHTML());
+        html.append(getEventManager().getHTML());
+        html.append(">\n");
         for (IOption option : options) {
             html.append(option.getText(depth)).append("\n");
         }

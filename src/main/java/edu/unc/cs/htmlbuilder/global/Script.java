@@ -1,5 +1,6 @@
 package edu.unc.cs.htmlBuilder.global;
 
+import edu.unc.cs.htmlBuilder.body.AbstractBodyElement;
 import java.util.Arrays;
 import java.util.Optional;
 import edu.unc.cs.htmlBuilder.util.AttributeManager;
@@ -7,7 +8,7 @@ import edu.unc.cs.htmlBuilder.util.IAttributeManager;
 import edu.unc.cs.htmlBuilder.util.Offsetter;
 import edu.unc.cs.htmlBuilder.util.ScriptGenerator;
 
-public class Script implements IScript {
+public class Script extends AbstractBodyElement implements IScript {
 
     private ScriptGenerator script;
 
@@ -19,6 +20,7 @@ public class Script implements IScript {
     private boolean external;
 
     public Script() {
+        super(false, false);
         attrs = new AttributeManager();
         script = () -> "";
         className = "";

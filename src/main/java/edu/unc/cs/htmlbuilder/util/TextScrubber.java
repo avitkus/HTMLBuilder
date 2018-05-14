@@ -18,6 +18,7 @@ public class TextScrubber {
         text = text.replaceAll("/(C/)", "&copy;");
         text = text.replaceAll("/(R/)", "&reg;");
         //System.out.println(text);
+        text = text.replaceAll("\n", "<br />");
         return text;
     }
 }

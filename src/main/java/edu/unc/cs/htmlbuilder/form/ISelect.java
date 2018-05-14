@@ -1,12 +1,10 @@
 package edu.unc.cs.htmlBuilder.form;
 
-import edu.unc.cs.htmlBuilder.util.IFormEventHandler;
-
 /**
  * @author Andrew Vitkus
  *
  */
-public interface ISelect extends IFormField, IFormEventHandler {
+public interface ISelect extends IFormField {
 
     public void addOption(IOption option);
 

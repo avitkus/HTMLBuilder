@@ -2,6 +2,7 @@ package edu.unc.cs.htmlBuilder.global;
 
 import java.util.ArrayList;
 import edu.unc.cs.htmlBuilder.IHTMLElement;
+import edu.unc.cs.htmlBuilder.body.AbstractBodyElement;
 import edu.unc.cs.htmlBuilder.util.AttributeManager;
 import edu.unc.cs.htmlBuilder.util.IAttributeManager;
 import edu.unc.cs.htmlBuilder.util.Offsetter;
@@ -10,7 +11,7 @@ import edu.unc.cs.htmlBuilder.util.Offsetter;
  *
  * @author Andrew Vitkus
  */
-public class NoScript implements INoScript {
+public class NoScript extends AbstractBodyElement implements INoScript {
 
     private final IAttributeManager attrs;
     private String className;
@@ -18,6 +19,7 @@ public class NoScript implements INoScript {
     private String id;
 
     public NoScript() {
+        super(false, true);
         attrs = new AttributeManager();
         elements = new ArrayList<>(3);
         className = "";
