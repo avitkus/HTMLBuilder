@@ -18,12 +18,12 @@
             <scope>test</scope>
             <type>jar</type>
         </dependency>
-        <dependency>
-            <groupId>edu.unc.cs</groupId>
-            <artifactId>HTTPServer</artifactId>
-            <version>1.0</version>
-            <type>jar</type>
-        </dependency>
+<!--         <dependency> -->
+<!--             <groupId>edu.unc.cs</groupId> -->
+<!--             <artifactId>HTTPServer</artifactId> -->
+<!--             <version>1.0</version> -->
+<!--             <type>jar</type> -->
+<!--         </dependency> -->
     </dependencies>
     <distributionManagement>
             <site>
